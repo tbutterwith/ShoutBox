@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>ShoutBox 1.0</title>
+<title>ShoutBox</title>
 </head>
 <body>
-Hello
+<form name="login" action="login" method="get">
+Username <input type="text" name="username"><br />
+Password <input type="password" name="password">
+<input type="submit" style="position: absolute; left: -9999px"/>
+</form>
 </body>
 </html>
