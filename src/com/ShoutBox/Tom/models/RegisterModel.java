@@ -15,7 +15,7 @@ Cluster cluster;
 	{
 		Session session = cluster.connect("shoutbox");
 		PreparedStatement statement = session.prepare("INSERT INTO users (user, password, email) VALUES (\'" +
-		username + "\', \'" +  password + "\', {\'" + email + "\'});");
+		username + "\', \'" +  password + "\', \'" + email + "\');");
 		
 		BoundStatement boundStatement = new BoundStatement(statement);
 		session.execute(boundStatement);
@@ -24,7 +24,7 @@ Cluster cluster;
 	
 	public boolean checkUsername(String username)
 	{
-Session session = cluster.connect("shoutbox");
+		Session session = cluster.connect("shoutbox");
 		
 		PreparedStatement statement = session.prepare("SELECT user FROM users WHERE user = \'" + username + "\';");
 		

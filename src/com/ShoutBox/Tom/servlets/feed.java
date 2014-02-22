@@ -65,11 +65,6 @@ public class feed extends HttpServlet {
 					shouts = sM.getShouts("", tag);
 			}
 			
-			
-			String uuid = UUIDs.timeBased().toString();
-			
-			System.out.println(uuid);
-			
 			request.setAttribute("Shouts", shouts);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/feed.jsp");
@@ -119,7 +114,6 @@ public class feed extends HttpServlet {
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("win");
 		String[] url = ParseURL.parseURL(request.getRequestURI().toString());
 		
 		UserStore uS = (UserStore) request.getSession().getAttribute("user");

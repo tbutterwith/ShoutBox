@@ -54,7 +54,7 @@ public class login extends HttpServlet {
 			
 		}
 		else
-			System.out.println("login failed");
+			response.sendRedirect("http://localhost:8080/ShoutBox/");
 	}
 
 	/**

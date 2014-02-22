@@ -27,7 +27,8 @@ String createkeyspace="create keyspace if not exists shoutBox WITH replication =
 String CreateUserTable = "CREATE TABLE if not exists users ("+
 "user varchar,"+
 " password varchar,"+
-" email set<text>,"+
+" email text,"+
+"secondaryEmail text," +
 " PRIMARY KEY (user, password)"+
 ");";
 String CreateShoutsTable = "CREATE TABLE if not exists shouts ("+

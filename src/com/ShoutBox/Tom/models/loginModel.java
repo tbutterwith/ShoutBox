@@ -23,10 +23,14 @@ public class loginModel {
 		BoundStatement boundStatement = new BoundStatement(statement);
 		ResultSet rs = session.execute(boundStatement);
 		if (rs.isExhausted()) {
+			session.close();
 			return false;
 		}
 		else
+		{
+			session.close();
 			return true;
+		}
 	}
 
 }
