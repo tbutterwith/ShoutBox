@@ -54,15 +54,20 @@ public class feed extends HttpServlet {
 			LinkedList<ShoutStore> shouts = new LinkedList<ShoutStore>();
 			if(url.length <= 3)
 			{
-				shouts = sM.getShouts("","");
+				FollowerModel followerM = new FollowerModel();
+				followerM.setCluster(cluster);
+				UserStore uS = (UserStore) request.getSession().getAttribute("user");
+				String username = uS.getUsername();
+				
+				shouts = sM.getShouts(username,"", followerM.getFollowers(username));
 			}
 			else if(url.length <= 5)
 			{
 				String tag = url[3];
 				if(tag.length() < 12)
-					shouts = sM.getShouts(tag, "");
+					shouts = sM.getShouts(tag, "", null);
 				else
-					shouts = sM.getShouts("", tag);
+					shouts = sM.getShouts("", tag, null);
 			}
 			
 			request.setAttribute("Shouts", shouts);
