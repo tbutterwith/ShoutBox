@@ -131,8 +131,24 @@ public class profile extends HttpServlet {
 		profileMod.setCluster(cluster);
 		UserStore uS = (UserStore) request.getSession().getAttribute("user");
 		String username = uS.getUsername();
-		profileMod.deleteUser(username);
-		profileMod.deleteAllShouts(username);
+		String password = request.getParameter("password");
+		
+		if(!profileMod.checkPassword(username, password))
+		{
+			MessageStore message = new MessageStore();
+			message.setMessage("Incorrect password");
+			request.setAttribute("errorMessage", message); //Set a bean with the list in it
+			
+			ProfileStore profileInfo = profileMod.getProfileDetail(username);
+			request.setAttribute("profile", profileInfo); //Set a bean with the list in it
+			RequestDispatcher rd = request.getRequestDispatcher("/profile.jsp");
+			rd.forward(request, response);
+		}
+		else
+		{
+			profileMod.deleteUser(username);
+			profileMod.deleteAllShouts(username);
+		}
 	}
 
 }
