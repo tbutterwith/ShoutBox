@@ -19,7 +19,7 @@ import com.datastax.driver.core.*;
 /**
  * Servlet implementation class follower
  */
-@WebServlet({ "/follower", "/follower/*" })
+@WebServlet({ "/follower*", "/follower/*" })
 public class follower extends HttpServlet {
 	private Cluster cluster;
 	private static final long serialVersionUID = 1L;
@@ -90,6 +90,8 @@ public class follower extends HttpServlet {
 				String username = uS.getUsername();
 				
 				followerM.newFollower(username, url[3]);
+				
+				response.sendRedirect("http://localhost:8080/ShoutBox/follower");
 			}
 		}
 		else

@@ -102,7 +102,7 @@ public class feed extends HttpServlet {
 				messModel.newShout(username, shoutText);
 			}
 			
-			doGet(request, response);
+			response.sendRedirect("http://localhost:8080/ShoutBox/feed");
 		}
 		else
 			response.sendRedirect("/ShoutBox");
