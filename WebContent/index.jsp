@@ -9,8 +9,15 @@
 <body>
 <form name="login" action="login" method="get">
 Username <input type="text" name="username"><br />
-Password <input type="password" name="password">
-<input type="submit" style="position: absolute; left: -9999px"/>
+Password <input type="password" name="password"><br />
+<input type="submit"/>
+</form>
+<form name="register" action="register" method="post">
+Username <input type="text" name="username"><br />
+Password <input type="password" name="password"><br />
+Repeat Password <input type="password" name="passwordRetype"><br />
+Email <input type="text" name="email"><br />
+<input type="submit"/>
 </form>
 </body>
 </html>

@@ -46,7 +46,7 @@ public class MessageModel {
 		shoutList.add(ts);
 		}
 		}
-		
+		session.close();
 		return shoutList;
 	}
 	
@@ -60,15 +60,17 @@ public class MessageModel {
 		
 		BoundStatement boundStatement = new BoundStatement(statement);
 		session.execute(boundStatement);
+		session.close();
 	}
 	
-	public void deleteShout(String uuid)
+	public void deleteShout(String user, String uuid)
 	{
 		Session session = cluster.connect("shoutbox");
 		
-		PreparedStatement statement = session.prepare("DELETE FROM shouts WHERE interaction_time = " + uuid);
+		PreparedStatement statement = session.prepare("DELETE FROM shouts WHERE user = \'" + user + "\' and interaction_time = " + uuid);
 		
 		BoundStatement boundStatement = new BoundStatement(statement);
 		session.execute(boundStatement);
+		session.close();
 	}
 }

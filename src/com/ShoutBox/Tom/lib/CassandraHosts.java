@@ -56,12 +56,14 @@ return sHosts;
 }
 public static Cluster getCluster(){
 System.out.println("getCluster");
-cluster = Cluster.builder()
-.addContactPoint(Host).build();
-getHosts(cluster);
-Keyspaces.SetUpKeySpaces(cluster);
+if(cluster == null)
+{
+	cluster = Cluster.builder()
+	.addContactPoint(Host).build();
+	getHosts(cluster);
+	Keyspaces.SetUpKeySpaces(cluster);
 
-
+}
 
 return cluster;
 

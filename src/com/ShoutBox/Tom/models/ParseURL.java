@@ -1,8 +1,12 @@
 package com.ShoutBox.Tom.models;
 
-public class ParseURL {
+public final class ParseURL {
 	
-	public String[] parseURL(String url)
+	public ParseURL(){
+		
+	}
+	
+	public static String[] parseURL(String url)
 	{
 		String [] urlArray = url.split("\\/");
 		

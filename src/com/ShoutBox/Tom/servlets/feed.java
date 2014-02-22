@@ -46,9 +46,7 @@ public class feed extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if((UserStore) request.getSession().getAttribute("user") != null)
 		{
-		
-			ParseURL parse = new ParseURL();
-			String[] url = parse.parseURL(request.getRequestURI().toString());
+			String[] url = ParseURL.parseURL(request.getRequestURI().toString());
 			
 			MessageModel sM = new MessageModel();
 			sM.setCluster(cluster);
@@ -91,10 +89,18 @@ public class feed extends HttpServlet {
 			UserStore uS = (UserStore) request.getSession().getAttribute("user");
 			String username = uS.getUsername();
 			
-			MessageModel messModel = new MessageModel ();
-			messModel.setCluster(cluster);
 			
-			messModel.newShout(username, shoutText);
+			String[] url = ParseURL.parseURL(request.getRequestURI().toString());
+			
+			if(url.length > 3)
+			{}
+			else
+			{
+				MessageModel messModel = new MessageModel ();
+				messModel.setCluster(cluster);
+				
+				messModel.newShout(username, shoutText);
+			}
 			
 			doGet(request, response);
 		}
@@ -114,13 +120,15 @@ public class feed extends HttpServlet {
 	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("win");
-		ParseURL parse = new ParseURL();
-		String[] url = parse.parseURL(request.getRequestURI().toString());
+		String[] url = ParseURL.parseURL(request.getRequestURI().toString());
+		
+		UserStore uS = (UserStore) request.getSession().getAttribute("user");
+		String username = uS.getUsername();
 		
 		MessageModel sM = new MessageModel();
 		sM.setCluster(cluster);
 		
-		sM.deleteShout(url[3]);
+		sM.deleteShout(username, url[3]);
 		doGet(request, response);
 	}
 	

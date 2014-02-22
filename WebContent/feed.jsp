@@ -13,12 +13,22 @@
 	function deleteShout(uuid)
 	{
 		$.ajax({
-		    url: 'feed/' + uuid,
+		    url: 'http://localhost:8080/ShoutBox/feed/' + uuid,
 		    type: 'DELETE',
 		    success: function(result) {
 		    	location.reload();
 		    }
 		});
+	}
+	function startFollowing(user)
+	{
+		$.ajax({
+			url: 'http://localhost:8080/ShoutBox/follower/' + user,
+			type: 'POST',
+			success: function(result) {
+				window.location = "http://localhost:8080/ShoutBox/follower";
+			}
+		})
 	}
 </script>
 </head>
@@ -29,11 +39,11 @@
 <input type="submit" value="Shout">
 </form>
 
-<h1>Tweet</h1>
+<h1>Feed</h1>
 <%
 	System.out.println("In render");
 List<ShoutStore> lShout = (List<ShoutStore>) request.getAttribute("Shouts");
-if (lShout==null){
+if (lShout.isEmpty()){
 %>
 <p>No Shouts found</p>
 <%
@@ -51,7 +61,8 @@ ShoutStore ss = (ShoutStore)iterator.next();
 %>
 <h3><%= ss.getUser() %></h3>
 <a href="/ShoutBox/feed/<%=ss.getUser() %>" ><%=ss.getShout() %></a><br/>
-<button type="button" onclick="deleteShout(<%= ss.getUuid() %>)">Delete</button> 
+<button tyoe="button" onclick="startFollowing(&quot;<%= ss.getUser() %>&quot;)">Follow <%= ss.getUser() %></button>
+<button type="button" onclick="deleteShout(&quot;<%= ss.getUuid() %>&quot;)">Delete</button> 
 <%
 
 }

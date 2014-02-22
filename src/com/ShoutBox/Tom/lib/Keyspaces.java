@@ -36,6 +36,10 @@ String CreateShoutsTable = "CREATE TABLE if not exists shouts ("+
 " shout varchar,"+
 " PRIMARY KEY (user,interaction_time)"+
 ") WITH CLUSTERING ORDER BY (interaction_time DESC);";
+String CreateFollowersTable = "CREATE TABLE if not exists followers ("+
+"user varchar," +
+" following set<text>," +
+"PRIMARY KEY (user));";
 Session session = c.connect();
 try{
 PreparedStatement statement = session.prepare(createkeyspace);
@@ -56,6 +60,8 @@ try{
 SimpleStatement cqlQuery = new SimpleStatement(CreateUserTable);
 session.execute(cqlQuery);
 cqlQuery = new SimpleStatement(CreateShoutsTable);
+session.execute(cqlQuery);
+cqlQuery = new SimpleStatement(CreateFollowersTable);
 session.execute(cqlQuery);
 }
 catch(Exception et){
