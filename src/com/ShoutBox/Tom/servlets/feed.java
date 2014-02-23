@@ -86,6 +86,7 @@ public class feed extends HttpServlet {
 		if((UserStore) request.getSession().getAttribute("user") != null)
 		{
 			String shoutText = request.getParameter("shoutText");
+			shoutText = shoutText.replace("\'", "&#39;");
 			UserStore uS = (UserStore) request.getSession().getAttribute("user");
 			String username = uS.getUsername();
 			

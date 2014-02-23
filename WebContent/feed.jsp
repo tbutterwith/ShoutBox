@@ -41,6 +41,9 @@
 
 <h1>Feed</h1>
 <%
+UserStore uS = (UserStore) request.getSession().getAttribute("user");
+String username = uS.getUsername();
+
 	System.out.println("In render");
 List<ShoutStore> lShout = (List<ShoutStore>) request.getAttribute("Shouts");
 if (lShout.isEmpty()){
@@ -62,7 +65,12 @@ ShoutStore ss = (ShoutStore)iterator.next();
 <h3><%= ss.getUser() %></h3>
 <a href="/ShoutBox/feed/<%=ss.getUser() %>" ><%=ss.getShout() %></a><br/>
 <button tyoe="button" onclick="startFollowing(&quot;<%= ss.getUser() %>&quot;)">Follow <%= ss.getUser() %></button>
-<button type="button" onclick="deleteShout(&quot;<%= ss.getUuid() %>&quot;)">Delete</button> 
+<% if(username.equals(ss.getUser())) 
+{
+	
+%>
+<button type="button" onclick="deleteShout(&quot;<%= ss.getUuid() %>&quot;, &quot;<%= ss.getUser() %>&quot;)">Delete</button> 
+<% } %>
 <%
 
 }

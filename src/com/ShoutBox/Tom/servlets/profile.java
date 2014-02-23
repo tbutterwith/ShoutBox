@@ -69,6 +69,7 @@ public class profile extends HttpServlet {
 			}
 			else
 			{
+				System.out.println("mistake");
 				ProfileStore profileInfo = profModel.getProfileInfo(url[3]);
 				request.setAttribute("profile", profileInfo); //Set a bean with the list in it
 				RequestDispatcher rd = request.getRequestDispatcher("/profile.jsp");

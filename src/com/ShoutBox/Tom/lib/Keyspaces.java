@@ -29,6 +29,7 @@ String CreateUserTable = "CREATE TABLE if not exists users ("+
 " password varchar,"+
 " email text,"+
 "secondaryEmail text," +
+"authLevel int," +
 " PRIMARY KEY (user, password)"+
 ");";
 String CreateShoutsTable = "CREATE TABLE if not exists shouts ("+
@@ -41,6 +42,7 @@ String CreateFollowersTable = "CREATE TABLE if not exists followers ("+
 "user varchar," +
 " following set<text>," +
 "PRIMARY KEY (user));";
+String CreateAdmin = "INSERT INTO users (user, password, email, authLevel) VALUES (\'admin\', \'password\', \'admin\', 2);";
 Session session = c.connect();
 try{
 PreparedStatement statement = session.prepare(createkeyspace);
@@ -63,6 +65,8 @@ session.execute(cqlQuery);
 cqlQuery = new SimpleStatement(CreateShoutsTable);
 session.execute(cqlQuery);
 cqlQuery = new SimpleStatement(CreateFollowersTable);
+session.execute(cqlQuery);
+cqlQuery = new SimpleStatement(CreateAdmin);
 session.execute(cqlQuery);
 }
 catch(Exception et){

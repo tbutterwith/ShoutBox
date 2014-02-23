@@ -54,7 +54,7 @@ public class login extends HttpServlet {
 			
 		}
 		else
-			response.sendRedirect("http://localhost:8080/ShoutBox/");
+			response.sendRedirect("http://localhost:8080/ShoutBox/incorrectlogin.jsp");
 	}
 
 	/**

@@ -14,8 +14,8 @@ Cluster cluster;
 	public void newUser(String username, String email, String password)
 	{
 		Session session = cluster.connect("shoutbox");
-		PreparedStatement statement = session.prepare("INSERT INTO users (user, password, email) VALUES (\'" +
-		username + "\', \'" +  password + "\', \'" + email + "\');");
+		PreparedStatement statement = session.prepare("INSERT INTO users (user, password, email, authlevel) VALUES (\'" +
+		username + "\', \'" +  password + "\', \'" + email + "\', 1);");
 		
 		BoundStatement boundStatement = new BoundStatement(statement);
 		session.execute(boundStatement);

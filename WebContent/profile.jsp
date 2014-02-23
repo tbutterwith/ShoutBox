@@ -10,6 +10,19 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
 </script>
 <script>
+var check = false;
+var emailcheck = false;
+function checkEmail()
+{
+	var email = document.getElementById("primaryEmail");
+	
+	if(document.getElementById("primaryEmail") == "")
+		emailcheck = false;
+	else
+		emailcheck = true;
+	
+	comparePasswords();
+}
 function comparePasswords()
 {
 	var password = document.getElementById("newPassword").value;
@@ -22,6 +35,11 @@ function comparePasswords()
 			document.getElementById("passwordError").innerHTML = "";
 			check = true;
 		}
+		
+		if(check == true && emailcheck == true)
+				document.getElementById("submitButton").innerHTML = "<input type=\"submit\" value=\"Save changes\"/>";
+		else
+			document.getElementById("submitButton").innerHTML = "";
 }
 function deleteUser(user)
 {
@@ -53,7 +71,7 @@ if (profile.getEmail() != null)
 %>
 <form name ="details" action="profile" method="POST">
 <h3>Change Password</h3>
-Current Password <input type="password" name="password" id="password"/><br />
+Current Password <input type="password" name="password" id="password" onKeyUp="checkEmail()"/><br />
 <%
 MessageStore message = (MessageStore) request.getAttribute("errorMessage");
 if(message != null)
@@ -63,14 +81,14 @@ if(message != null)
 New Password <input type="password" name="newPassword" id="newPassword" /><br />
 Retype Password <input type="password" name="passwordRetype" id="passwordRetype" onKeyUp="comparePasswords()"/><br />
 <span id="passwordError"></span><br />
-Primary Email <input type="text" name="primaryEmail" id="primaryEmail" value="<%= profile.getEmail() %>"><br />
+Primary Email <input type="text" name="primaryEmail" id="primaryEmail" value="<%= profile.getEmail() %>" onKeyUp="checkEmail()"><br />
 <%
 String email2 = "";
 if(profile.getSecondaryEmail() != null)
 	email2 = profile.getSecondaryEmail();
 	%>
-Secondary Email <input type="text" name="secondaryEmail" id="secondaryEmail" value="<%= email2 %>"><br />
-<input type="submit" value="Save changes"/>
+Secondary Email <input type="text" name="secondaryEmail" id="secondaryEmail" value="<%= email2 %>" onKeyUp="checkEmail()"><br />
+<span id="submitButton"></span>
 
 </form>
 <button onclick="deleteUser(&quot;<%=profile.getUsername()%>&quot;)">Delete my account</button>
