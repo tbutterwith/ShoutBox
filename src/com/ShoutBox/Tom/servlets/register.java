@@ -60,7 +60,7 @@ public class register extends HttpServlet {
 			MessageStore message = new MessageStore();
 			message.setMessage("This username is already taken");
 			request.setAttribute("errorMessage", message); //Set a bean with the list in it
-			RequestDispatcher rd = request.getRequestDispatcher("http://ac32007.cloudapp.net:8080/ShoutBox/index.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 
 			rd.forward(request, response);
 		}

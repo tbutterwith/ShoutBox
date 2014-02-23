@@ -49,7 +49,7 @@ public class profile extends HttpServlet {
 			{
 				ProfileStore profileInfo = profModel.getProfileInfo(url[3]);
 				request.setAttribute("profile", profileInfo); //Set a bean with the list in it
-				RequestDispatcher rd = request.getRequestDispatcher("http://ac32007.cloudapp.net:8080/ShoutBox/profile.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("profile.jsp");
 
 				rd.forward(request, response);
 			}
@@ -64,14 +64,14 @@ public class profile extends HttpServlet {
 				String username = uS.getUsername();
 				ProfileStore profileInfo = profModel.getProfileDetail(username);
 				request.setAttribute("profile", profileInfo); //Set a bean with the list in it
-				RequestDispatcher rd = request.getRequestDispatcher("http://ac32007.cloudapp.net:8080/ShoutBox/profile.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("profile.jsp");
 				rd.forward(request, response);
 			}
 			else
 			{
 				ProfileStore profileInfo = profModel.getProfileInfo(url[3]);
 				request.setAttribute("profile", profileInfo); //Set a bean with the list in it
-				RequestDispatcher rd = request.getRequestDispatcher("http://ac32007.cloudapp.net:8080/ShoutBox/profile.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("profile.jsp");
 
 				rd.forward(request, response);
 			}
@@ -101,7 +101,7 @@ public class profile extends HttpServlet {
 				
 				ProfileStore profileInfo = profileMod.getProfileDetail(username);
 				request.setAttribute("profile", profileInfo); //Set a bean with the list in it
-				RequestDispatcher rd = request.getRequestDispatcher("http://ac32007.cloudapp.net:8080/ShoutBox/profile.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("profile.jsp");
 				rd.forward(request, response);
 			}
 			else
@@ -115,7 +115,7 @@ public class profile extends HttpServlet {
 				String secondaryEmail = request.getParameter("secondaryEmail");
 				profileMod.updateProfile(username, password, primaryEmail, secondaryEmail);
 				System.out.println("test");
-				response.sendRedirect("http://ac32007.cloudapp.net:8080/ShoutBox/profile");
+				response.sendRedirect("profile");
 			}
 			
 		}

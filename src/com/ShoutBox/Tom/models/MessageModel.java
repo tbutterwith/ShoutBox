@@ -88,13 +88,13 @@ public class MessageModel {
 		LinkedList<ShoutStore> shoutList = new LinkedList<ShoutStore>();
 		Session session = cluster.connect("shoutbox");
 		
-		PreparedStatement statement = session.prepare("SELECT user from users");
+		PreparedStatement statement = session.prepare("SELECT * from users");
 		BoundStatement boundStatement = new BoundStatement(statement);
 		
 		String usernames = "(\'";
 		ResultSet rs = session.execute(boundStatement);
 		if (rs.isExhausted()) {
-			System.out.println("No Shouts returned");
+			//
 		} else {
 			for (Row row : rs) {
 				usernames = usernames + row.getString("user") + "\', \'";
@@ -103,7 +103,7 @@ public class MessageModel {
 			usernames = usernames + ")";
 		}
 		
-		String query = "SELECT * FROM shouts WHERE user IN " + usernames + " ORDER BY interaction_time DESC";
+		String query = "SELECT * FROM shouts WHERE user IN " + usernames + " ORDER BY interaction_time DESC LIMIT 25";
 		System.out.println(query);
 		statement = session.prepare(query);
 		boundStatement = new BoundStatement(statement);

@@ -51,9 +51,9 @@
 			Shout<b>Box</b>
 		</div>
 		<div class="links">
-			<a href="http://ac32007.cloudapp.net:8080/ShoutBox/feed/all">All </a>
-			<a href="http://ac32007.cloudapp.net:8080/ShoutBox/feed">Feed </a>
-			<a href="http://ac32007.cloudapp.net:8080/ShoutBox/profile">Profile </a>
+			<a href="feed/all">All </a>
+			<a href="#">Feed </a>
+			<a href="profile">Profile </a>
 			<a href="http://ac32007.cloudapp.net:8080/ShoutBox/follower">Followers </a>
 			<a href="http://ac32007.cloudapp.net:8080/ShoutBox/logout">Logout</a>
 		</div>
