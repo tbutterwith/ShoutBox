@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Followers</title>
+<title>Your Followers</title>
 </head>
 <body>
 <h1>Followers</h1>

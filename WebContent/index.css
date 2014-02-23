@@ -1,0 +1,44 @@
+@CHARSET "US-ASCII";
+
+.body{
+	width: 300px;
+	height: 300px;
+	margin: auto;
+	padding-top:200px;
+	
+}
+
+#leftColumn
+{
+	width: 60px;
+	float: left;
+}
+#rightColumn
+{
+	wdith: 240px;
+	float: right;
+	text-align: right;
+}
+
+#registerDiv
+{
+	display: none;
+}
+
+a:link,
+a:visited
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+a:hover
+{
+	color: #56E8A1;
+}
+
+h3
+{
+	font-size: 20px;
+	color: #FFFFFF;
+}

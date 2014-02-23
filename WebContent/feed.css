@@ -1,0 +1,54 @@
+@CHARSET "US-ASCII";
+
+
+.body{
+	width: 500px;
+	margin: auto;
+	padding-top: 50px;
+}
+
+.feed
+{
+	width:455px;
+	background-color: rgba(255, 255, 255, 1);
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	margin-top: 15px;
+	padding-top: 0.1px;
+	padding-left: 10px;
+	padding-bottom: 30px;
+	text-align: left;
+}
+
+.links
+{
+	text-align: right;
+	font-family: Helvetica;
+	color: #569DE8;
+	font-size: 20px;
+	width: 300px;
+	float:right;
+	padding-right: 75px;
+	word-spacing: 25px;
+}
+
+.links 
+	a:link
+{
+	color: #569DE8;
+	text-decoration: none;
+}
+
+.links
+	a:visited
+{
+	color: #569DE8;
+	text-decoration: none;
+}
+
+.links
+	a:hover
+{
+	color: #3369A1;
+	text-decoration: none;
+}

@@ -90,7 +90,6 @@ public class ProfileModel {
 	
 	public void deleteUser(String username)
 	{
-		System.out.println("Hey!");
 		Session session = cluster.connect("shoutbox");
 		PreparedStatement statement = session.prepare("DELETE FROM users WHERE user=\'" + username + "\';");
 
