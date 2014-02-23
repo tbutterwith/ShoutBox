@@ -83,6 +83,46 @@ public class MessageModel {
 		session.execute(boundStatement);
 		session.close();
 	}
+	public LinkedList<ShoutStore> getAllShouts()
+	{
+		LinkedList<ShoutStore> shoutList = new LinkedList<ShoutStore>();
+		Session session = cluster.connect("shoutbox");
+		
+		PreparedStatement statement = session.prepare("SELECT user from users");
+		BoundStatement boundStatement = new BoundStatement(statement);
+		
+		String usernames = "(\'";
+		ResultSet rs = session.execute(boundStatement);
+		if (rs.isExhausted()) {
+			System.out.println("No Shouts returned");
+		} else {
+			for (Row row : rs) {
+				usernames = usernames + row.getString("user") + "\', \'";
+			}
+			usernames = usernames.substring(0, usernames.length()-3);
+			usernames = usernames + ")";
+		}
+		
+		String query = "SELECT * FROM shouts WHERE user IN " + usernames + " ORDER BY interaction_time DESC";
+		System.out.println(query);
+		statement = session.prepare(query);
+		boundStatement = new BoundStatement(statement);
+		rs = session.execute(boundStatement);
+		if (rs.isExhausted()) {
+			System.out.println("No Shouts returned");
+		} else {
+			for (Row row : rs) {
+				ShoutStore ts = new ShoutStore();
+				ts.setShout(row.getString("shout"));
+				ts.setUser(row.getString("user"));
+				ts.setUuid(row.getUUID("interaction_time").toString());
+				shoutList.add(ts);
+			}
+		}
+		session.close();
+		
+		return shoutList;
+	}
 	
 	public void deleteShout(String user, String uuid)
 	{

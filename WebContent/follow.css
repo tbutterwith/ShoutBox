@@ -33,4 +33,35 @@
 	text-decoration: none;
 }
 
+.links
+{
+	text-align: right;
+	font-family: Helvetica;
+	color: #569DE8;
+	font-size: 20px;
+	width: 300px;
+	float:right;
+	padding-right: 75px;
+	word-spacing: 25px;
+}
 
+.links 
+	a:link
+{
+	color: #569DE8;
+	text-decoration: none;
+}
+
+.links
+	a:visited
+{
+	color: #569DE8;
+	text-decoration: none;
+}
+
+.links
+	a:hover
+{
+	color: #3369A1;
+	text-decoration: none;
+}

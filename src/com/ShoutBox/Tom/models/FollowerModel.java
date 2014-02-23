@@ -45,5 +45,17 @@ public class FollowerModel {
 		session.execute(boundStatement);
 		session.close();
 	}
+	
+	public void deleteFollower(String user, String follower)
+	{
+		Session session = cluster.connect("shoutbox");
+		
+		PreparedStatement statement = session.prepare("UPDATE followers SET following = following - {\'" + follower + "\'}" +
+				"WHERE user = \'" + user + "\';");
+		
+		BoundStatement boundStatement = new BoundStatement(statement);
+		session.execute(boundStatement);
+		session.close();
+	}
 
 }

@@ -102,7 +102,26 @@ public class follower extends HttpServlet {
 	 * @see HttpServlet#doDelete(HttpServletRequest, HttpServletResponse)
 	 */
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		if((UserStore) request.getSession().getAttribute("user") != null)
+		{
+			String[] url = ParseURL.parseURL(request.getRequestURI().toString());
+			if(url.length <= 3)
+				response.sendRedirect("http://localhost8080/ShoutBox/feed");
+			else
+			{
+				FollowerModel followerM = new FollowerModel();
+				followerM.setCluster(cluster);
+				
+				UserStore uS = (UserStore) request.getSession().getAttribute("user");
+				String username = uS.getUsername();
+				
+				followerM.deleteFollower(username, url[3]);
+				
+				response.sendRedirect("http://localhost:8080/ShoutBox/follower");
+			}
+		}
+		else
+			response.sendRedirect("/ShoutBox");
 	}
 
 }

@@ -63,11 +63,18 @@ public class feed extends HttpServlet {
 			}
 			else if(url.length <= 5)
 			{
-				String tag = url[3];
-				if(tag.length() < 12)
-					shouts = sM.getShouts(tag, "", null);
+				if(url[3].equals("all"))
+				{
+					shouts = sM.getAllShouts();
+				}
 				else
-					shouts = sM.getShouts("", tag, null);
+				{
+					String tag = url[3];
+					if(tag.length() < 12)
+						shouts = sM.getShouts(tag, "", null);
+					else
+						shouts = sM.getShouts("", tag, null);
+				}
 			}
 			
 			request.setAttribute("Shouts", shouts);

@@ -5,6 +5,7 @@ public class ShoutStore {
      String Shout;
      String User;
      String uuid;
+     int time;
      
      public String getShout(){
      return Shout;
@@ -15,6 +16,11 @@ public class ShoutStore {
      
      public String getUuid(){
     	 return uuid;
+     }
+     
+     public int getTime()
+     {
+    	 return time;
      }
      
      public void setShout(String Shout){

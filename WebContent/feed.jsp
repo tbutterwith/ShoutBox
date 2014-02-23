@@ -8,8 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>ShoutBox Feed</title>
 
-<link rel="stylesheet" type="text/css" href="main.css">
-<link rel="stylesheet" type="text/css" href="feed.css">
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/ShoutBox/main.css">
+<link rel="stylesheet" type="text/css" href="http://localhost:8080/ShoutBox/feed.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
 </script>
 <script>
@@ -31,7 +31,17 @@
 			success: function(result) {
 				window.location = "http://localhost:8080/ShoutBox/follower";
 			}
-		})
+		});
+	}
+	function stopFollowing(user)
+	{
+		$.ajax({
+			url: 'http://localhost:8080/ShoutBox/follower/' + user,
+			type: 'DELETE',
+			success: function(result) {
+				location.reload();
+			}
+		});
 	}
 </script>
 </head>
@@ -41,8 +51,11 @@
 			Shout<b>Box</b>
 		</div>
 		<div class="links">
+			<a href="http://localhost:8080/ShoutBox/feed/all">All </a>
+			<a href="http://localhost:8080/ShoutBox/feed">Feed </a>
 			<a href="http://localhost:8080/ShoutBox/profile">Profile </a>
-			<a href="http://localhost:8080/ShoutBox/follower">Followers</a>
+			<a href="http://localhost:8080/ShoutBox/follower">Followers </a>
+			<a href="http://localhost:8080/ShoutBox/logout">Logout</a>
 		</div>
 	</div>
 <div class="body">
@@ -75,15 +88,17 @@ iterator = lShout.iterator();
 while (iterator.hasNext()){
 ShoutStore ss = (ShoutStore)iterator.next();
 %>
-<h3><%= ss.getUser() %></h3>
-<a href="/ShoutBox/feed/<%=ss.getUser() %>" ><%=ss.getShout() %></a><br/>
+<a href="/ShoutBox/feed/<%= ss.getUser() %>" class="userLink"><%= ss.getUser() %></a><br />
+<a href="/ShoutBox/feed/<%=ss.getUuid() %>" class="shoutLink"><%=ss.getShout() %></a><br/>
 <% if(username.equals(ss.getUser())) 
 {
 	
 %>
-<button type="button" onclick="deleteShout(&quot;<%= ss.getUuid() %>&quot;, &quot;<%= ss.getUser() %>&quot;)">Delete</button> 
+<button type="button" onclick="deleteShout(&quot;<%= ss.getUuid() %>&quot;, &quot;<%= ss.getUser() %>&quot;)">Delete this shout?</button><br /><br /><br /> 
 <% } else { %>
-<button onclick="startFollowing(&quot;<%= ss.getUser() %>&quot;)">Follow <%= ss.getUser() %></button>
+<button onclick="startFollowing(&quot;<%= ss.getUser() %>&quot;)">Follow <%= ss.getUser() %>'s shouts?</button>
+<button onclick="stopFollowing(&quot;<%= ss.getUser() %>&quot;)">Stop following <%= ss.getUser() %>'s shouts?</button>
+<br /><br /><br />
 <%
 }
 }
