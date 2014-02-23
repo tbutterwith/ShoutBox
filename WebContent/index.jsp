@@ -120,7 +120,7 @@
 				<td valign="top">Repeat Password</td><td style="width:240px; text-align:right;"><input type="password" id="passwordRetype" onkeyup="checkPass()"><br /><br /></td>
 				</tr>
 				</table>
-				<span id="error"></span>
+				<span id="error" class="error"></span>
 				<table>
 				<tr>
 				<td style="width:100px;" valign="top">Email</td><td style="width:240px; text-align:right;"><input type="text" id="email" name="email" onkeyup="checkBoxes()"><br /><br /></td>
