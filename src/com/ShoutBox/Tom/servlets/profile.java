@@ -49,12 +49,12 @@ public class profile extends HttpServlet {
 			{
 				ProfileStore profileInfo = profModel.getProfileInfo(url[3]);
 				request.setAttribute("profile", profileInfo); //Set a bean with the list in it
-				RequestDispatcher rd = request.getRequestDispatcher("/profile.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("http://ac32007.cloudapp.net:8080/ShoutBox/profile.jsp");
 
 				rd.forward(request, response);
 			}
 			else
-				response.sendRedirect("http://localhost:8080/ShoutBox");
+				response.sendRedirect("http://ac32007.cloudapp.net:8080/ShoutBox/");
 		}
 		else
 		{
@@ -64,14 +64,14 @@ public class profile extends HttpServlet {
 				String username = uS.getUsername();
 				ProfileStore profileInfo = profModel.getProfileDetail(username);
 				request.setAttribute("profile", profileInfo); //Set a bean with the list in it
-				RequestDispatcher rd = request.getRequestDispatcher("/profile.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("http://ac32007.cloudapp.net:8080/ShoutBox/profile.jsp");
 				rd.forward(request, response);
 			}
 			else
 			{
 				ProfileStore profileInfo = profModel.getProfileInfo(url[3]);
 				request.setAttribute("profile", profileInfo); //Set a bean with the list in it
-				RequestDispatcher rd = request.getRequestDispatcher("/profile.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("http://ac32007.cloudapp.net:8080/ShoutBox/profile.jsp");
 
 				rd.forward(request, response);
 			}
@@ -83,7 +83,7 @@ public class profile extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if((UserStore) request.getSession().getAttribute("user") == null)
-			response.sendRedirect("http://localhost:8080/ShoutBox");
+			response.sendRedirect("http://ac32007.cloudapp.net:8080/ShoutBox/");
 		else
 		{
 			ProfileModel profileMod = new ProfileModel();
@@ -101,7 +101,7 @@ public class profile extends HttpServlet {
 				
 				ProfileStore profileInfo = profileMod.getProfileDetail(username);
 				request.setAttribute("profile", profileInfo); //Set a bean with the list in it
-				RequestDispatcher rd = request.getRequestDispatcher("/profile.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("http://ac32007.cloudapp.net:8080/ShoutBox/profile.jsp");
 				rd.forward(request, response);
 			}
 			else
@@ -115,7 +115,7 @@ public class profile extends HttpServlet {
 				String secondaryEmail = request.getParameter("secondaryEmail");
 				profileMod.updateProfile(username, password, primaryEmail, secondaryEmail);
 				System.out.println("test");
-				response.sendRedirect("http://localhost:8080/ShoutBox/profile");
+				response.sendRedirect("http://ac32007.cloudapp.net:8080/ShoutBox/profile");
 			}
 			
 		}
@@ -141,7 +141,7 @@ public class profile extends HttpServlet {
 			
 			ProfileStore profileInfo = profileMod.getProfileDetail(username);
 			request.setAttribute("profile", profileInfo); //Set a bean with the list in it
-			RequestDispatcher rd = request.getRequestDispatcher("/profile.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("http://ac32007.cloudapp.net:8080/ShoutBox/profile.jsp");
 			rd.forward(request, response);
 		}
 		else

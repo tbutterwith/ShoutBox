@@ -50,11 +50,11 @@ public class login extends HttpServlet {
 			uStore.setUsername(username);
 			request.getSession().setAttribute("user", uStore);
 			
-			response.sendRedirect("feed");
+			response.sendRedirect("http://ac32007.cloudapp.net:8080/ShoutBox/feed");
 			
 		}
 		else
-			response.sendRedirect("http://localhost:8080/ShoutBox/incorrectlogin.jsp");
+			response.sendRedirect("http://ac32007.cloudapp.net:8080/ShoutBox/incorrectlogin.jsp");
 	}
 
 	/**

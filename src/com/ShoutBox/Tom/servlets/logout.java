@@ -29,7 +29,7 @@ public class logout extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if((UserStore) request.getSession().getAttribute("user") == null)
-			response.sendRedirect("http://localhost:8080/ShoutBox");
+			response.sendRedirect("http://ac32007.cloudapp.net:8080/ShoutBox/");
 		else
 			doPut(request, response);
 	}
@@ -39,7 +39,7 @@ public class logout extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if((UserStore) request.getSession().getAttribute("user") == null)
-			response.sendRedirect("http://localhost:8080/ShoutBox");
+			response.sendRedirect("http://ac32007.cloudapp.net:8080/ShoutBox/");
 		else
 			doPut(request, response);
 	}
@@ -49,11 +49,11 @@ public class logout extends HttpServlet {
 	 */
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if((UserStore) request.getSession().getAttribute("user") == null)
-			response.sendRedirect("http://localhost:8080/ShoutBox");
+			response.sendRedirect("http://ac32007.cloudapp.net:8080/ShoutBox/");
 		else
 		{
 			request.getSession().setAttribute("user", null);
-			response.sendRedirect("http://localhost:8080/ShoutBox");
+			response.sendRedirect("http://ac32007.cloudapp.net:8080/ShoutBox/");
 		}
 	}
 

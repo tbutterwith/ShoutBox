@@ -62,14 +62,14 @@ public class follower extends HttpServlet {
 				Set<String> followers = followerM.getFollowers(username);
 				
 				request.setAttribute("Followers", followers); //Set a bean with the list in it
-				RequestDispatcher rd = request.getRequestDispatcher("/FollowersList.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("http://ac32007.cloudapp.net:8080/ShoutBox//FollowersList.jsp");
 
 				rd.forward(request, response);
 				
 			}
 		}
 		else
-			response.sendRedirect("http://localhost:8080/ShoutBox");
+			response.sendRedirect("http://ac32007.cloudapp.net:8080/ShoutBox/");
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class follower extends HttpServlet {
 		{
 			String[] url = ParseURL.parseURL(request.getRequestURI().toString());
 			if(url.length <= 3)
-				response.sendRedirect("http://localhost8080/ShoutBox/feed");
+				response.sendRedirect("http://ac32007.cloudapp.net:8080/ShoutBox/feed");
 			else
 			{
 				FollowerModel followerM = new FollowerModel();
@@ -91,11 +91,11 @@ public class follower extends HttpServlet {
 				
 				followerM.newFollower(username, url[3]);
 				
-				response.sendRedirect("http://localhost:8080/ShoutBox/follower");
+				response.sendRedirect("http://ac32007.cloudapp.net:8080/ShoutBox/follower");
 			}
 		}
 		else
-			response.sendRedirect("/ShoutBox");
+			response.sendRedirect("http://ac32007.cloudapp.net:8080/ShoutBox/");
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class follower extends HttpServlet {
 		{
 			String[] url = ParseURL.parseURL(request.getRequestURI().toString());
 			if(url.length <= 3)
-				response.sendRedirect("http://localhost8080/ShoutBox/feed");
+				response.sendRedirect("hhttp://ac32007.cloudapp.net:8080/ShoutBox/feed");
 			else
 			{
 				FollowerModel followerM = new FollowerModel();
@@ -117,11 +117,11 @@ public class follower extends HttpServlet {
 				
 				followerM.deleteFollower(username, url[3]);
 				
-				response.sendRedirect("http://localhost:8080/ShoutBox/follower");
+				response.sendRedirect("http://ac32007.cloudapp.net:8080/ShoutBox/follower");
 			}
 		}
 		else
-			response.sendRedirect("/ShoutBox");
+			response.sendRedirect("http://ac32007.cloudapp.net:8080/ShoutBox/");
 	}
 
 }

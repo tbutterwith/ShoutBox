@@ -6,8 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>ShoutBox</title>
-<link rel="stylesheet" type="text/css" href="main.css">
-<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" type="text/css" href="http://ac32007.cloudapp.net:8080/ShoutBox/main.css">
+<link rel="stylesheet" type="text/css" href="http://ac32007.cloudapp.net:8080/ShoutBox/index.css">
 </head>
 <script>
 	var passcheck = false;
@@ -82,7 +82,7 @@
 	</div>
 	<div class="body">
 		<div id="loginDiv">
-			<form name="login" action="login" method="get">
+			<form name="login" action="http://ac32007.cloudapp.net:8080/ShoutBox/login" method="get">
 				<div id="leftColumn">
 					Username<br /><br />
 					Password<br /><br />
@@ -97,7 +97,7 @@
 			</form>
 		</div>
 		<div id="registerDiv">
-			<form name="register" action="register" method="post">
+			<form name="register" action="http://ac32007.cloudapp.net:8080/ShoutBox/register" method="post">
 			<table>
 			<tr>
 				<td style="width:100px;" valign="top">Username</td><td style="width:240px; text-align:right;"><input type="text" id="newUsername" name="newUsername" onkeyup="checkBoxes()"><br /><br /></td>

@@ -79,11 +79,11 @@ public class feed extends HttpServlet {
 			
 			request.setAttribute("Shouts", shouts);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/feed.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("http://ac32007.cloudapp.net:8080/ShoutBox/feed.jsp");
 			rd.forward(request, response);
 		}
 		else
-			response.sendRedirect("/ShoutBox/");
+			response.sendRedirect("http://ac32007.cloudapp.net:8080/ShoutBox/");
 	}
 
 	/**
@@ -110,10 +110,10 @@ public class feed extends HttpServlet {
 				messModel.newShout(username, shoutText);
 			}
 			
-			response.sendRedirect("http://localhost:8080/ShoutBox/feed");
+			response.sendRedirect("http://ac32007.cloudapp.net:8080/ShoutBox/feed");
 		}
 		else
-			response.sendRedirect("/ShoutBox");
+			response.sendRedirect("http://ac32007.cloudapp.net:8080/ShoutBox/");
 	}
 
 	/**

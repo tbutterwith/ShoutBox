@@ -41,7 +41,7 @@ public class register extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if((UserStore) request.getSession().getAttribute("user") == null)
-			response.sendRedirect("http://localhost:8080/ShoutBox");
+			response.sendRedirect("http://ac32007.cloudapp.net:8080/ShoutBox/");
 	}
 
 	/**
@@ -60,7 +60,7 @@ public class register extends HttpServlet {
 			MessageStore message = new MessageStore();
 			message.setMessage("This username is already taken");
 			request.setAttribute("errorMessage", message); //Set a bean with the list in it
-			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("http://ac32007.cloudapp.net:8080/ShoutBox/index.jsp");
 
 			rd.forward(request, response);
 		}
@@ -74,7 +74,7 @@ public class register extends HttpServlet {
 			response.sendRedirect("feed");
 		}
 		
-		//response.sendRedirect("http://localhost:8080/ShoutBox");
+		//response.sendRedirect("http://ac32007.cloudapp.net:8080/ShoutBox");
 	}
 
 }

@@ -7,8 +7,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Your Profile</title>
-<link rel="stylesheet" type="text/css" href="http://localhost:8080/ShoutBox/main.css">
-<link rel="stylesheet" type="text/css" href="http://localhost:8080/ShoutBox/feed.css">
+<link rel="stylesheet" type="text/css" href="http://ac32007.cloudapp.net:8080/ShoutBox/main.css">
+<link rel="stylesheet" type="text/css" href="http://ac32007.cloudapp.net:8080/ShoutBox/feed.css">
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
 </script>
 <script>
@@ -46,10 +46,10 @@ function comparePasswords()
 function deleteUser(user)
 {
 	$.ajax({
-	    url: 'http://localhost:8080/ShoutBox/profile/' + user,
+	    url: 'http://ac32007.cloudapp.net:8080/ShoutBox/profile/' + user,
 	    type: 'DELETE',
 	    success: function(result) {
-	    	window.location = "http://localhost:8080/ShoutBox/";
+	    	window.location = "http://ac32007.cloudapp.net:8080/ShoutBox/";
 	    }
 	});
 }
@@ -61,11 +61,11 @@ function deleteUser(user)
 			Shout<b>Box</b>
 		</div>
 		<div class="links">
-			<a href="http://localhost:8080/ShoutBox/feed/all">All </a>
-			<a href="http://localhost:8080/ShoutBox/feed">Feed </a>
-			<a href="http://localhost:8080/ShoutBox/profile">Profile </a>
-			<a href="http://localhost:8080/ShoutBox/follower">Followers </a>
-			<a href="http://localhost:8080/ShoutBox/logout">Logout</a>
+			<a href="http://ac32007.cloudapp.net:8080/ShoutBox/feed/all">All </a>
+			<a href="http://ac32007.cloudapp.net:8080/ShoutBox/feed">Feed </a>
+			<a href="http://ac32007.cloudapp.net:8080/ShoutBox/profile">Profile </a>
+			<a href="http://ac32007.cloudapp.net:8080/ShoutBox/follower">Followers </a>
+			<a href="http://ac32007.cloudapp.net:8080/ShoutBox/logout">Logout</a>
 		</div>
 	</div>
 <div class="body">
