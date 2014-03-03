@@ -132,5 +132,6 @@
 			</form>
 		</div>
 	</div>
+<div class="logo"><img width="150px" src="logo_white.png" /></div>
 </body>
 </html>

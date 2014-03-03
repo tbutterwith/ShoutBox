@@ -25,6 +25,13 @@
 	display: none;
 }
 
+.logo
+{
+	position: fixed;
+	left: 20px;
+	top: 500px;
+}
+
 a:link,
 a:visited
 {
